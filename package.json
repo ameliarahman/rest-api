@@ -17,6 +17,7 @@
     "morgan": "~1.0.0",
     "pg": "^7.4.0",
     "sequelize": "^4.22.6",
+    "sequelize-cli": "^3.0.0",
     "static-favicon": "~1.0.0"
   }
 }
