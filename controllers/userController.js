@@ -67,7 +67,8 @@ createDataUser = (req, res) => {
             password: newPassword,
             address: req.body.address,
             no_telp: req.body.no_telp,
-            admin: req.body.admin
+            admin: req.body.admin,
+            username: req.body.username
         })
             .then((dataUser) => {
                 res.send(dataUser)
@@ -98,6 +99,7 @@ signupDataUser = (req, res) => {
             password: newPassword,
             address: req.body.address,
             no_telp: req.body.no_telp,
+            username: req.body.username,
             admin: false
         })
             .then((dataUser) => {
@@ -111,19 +113,24 @@ signupDataUser = (req, res) => {
 }
 
 deleteDataUser = (req, res) => {
-    User.destroy({
-        where: {
-            id: req.params.id
-        }
-    })
-        .then(() => {
-            res.send({
-                message: 'Successfully deleted!'
+    if (req.headers.decoded.id == req.params.id) {
+        res.send("Anda tidak dapat mendelete diri Anda sendiri")
+    } else {
+        User.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+            .then(() => {
+                res.send({
+                    message: 'Successfully deleted!'
+                })
             })
-        })
-        .catch((reason) => {
-            res.send(reason)
-        })
+            .catch((reason) => {
+                res.send(reason)
+            })
+    }
+
 }
 
 updateDataUser = (req, res) => {

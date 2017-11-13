@@ -1,13 +1,19 @@
 const jwt = require('jsonwebtoken')
 
 function isLogin(req, res, next) {
-    jwt.verify(req.headers.token, "hegfefkahfkahfdju", function (err, decoded) {
+    jwt.verify(req.headers.token, "hegfefkahfkahfdju", function (err, result) {
         if (err) {
-            console.log(err)
+            res.send(err)
+        }
+        if (result.isLogin) {
+            req.headers.decoded = result
+            next()
         } else {
-            console.log(decoded)
+            res.send("Anda harus login")
         }
     })
 }
+
+
 
 module.exports = isLogin
