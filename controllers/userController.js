@@ -4,7 +4,7 @@ const encrypt = require('../helpers/encrypt')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken')
-
+require('dotenv').config()
 
 signInDataUser = (req, res) => {
     User.findOne({
@@ -30,7 +30,7 @@ signInDataUser = (req, res) => {
                         username: dataUser.username,
                         isLogin: true
                     }
-                    jwt.sign(payload, "hegfefkahfkahfdju", function (err, token) {
+                    jwt.sign(payload, process.env.secret, function (err, token) {
                         if (err) {
                             throw err
                         } else {

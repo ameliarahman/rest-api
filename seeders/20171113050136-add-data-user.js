@@ -5,11 +5,11 @@ module.exports = {
     return queryInterface.bulkInsert('Users', [{
       first_name: "Amelia",
       last_name: "Rahman",
-      username: "ameliarahman",
-      password: "ameliarahman",
+      username: "amel",
+      password: "$2a$10$X2CQbRKDK9HZMZIZS9ZhzuoZyqvBv7qo6WuFQ7nTz510aE1DVTrRu",
       address: "Jl. Bunga Mawar Melati",
       no_telp: "081318352537",
-      admin: false
+      admin: true
 
     }])
 

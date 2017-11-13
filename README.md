@@ -18,3 +18,8 @@ Route | HTTP | Description
 ## Usage
 With only npm :
 npm install
+npm start
+
+## Create
+create .env :
+secret="Fill your secret"

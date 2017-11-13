@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
 function isLogin(req, res, next) {
-    jwt.verify(req.headers.token, "hegfefkahfkahfdju", function (err, result) {
+    jwt.verify(req.headers.token, process.env.secret, function (err, result) {
         if (err) {
             res.send(err)
         }
