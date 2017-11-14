@@ -6,7 +6,7 @@ const saltRounds = 10;
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
-signInDataUser = (req, res) => {
+let signInDataUser = (req, res) => {
     User.findOne({
         where: {
             username: req.body.username
@@ -46,7 +46,7 @@ signInDataUser = (req, res) => {
     })
 }
 
-getAllDataUser = (req, res) => {
+let getAllDataUser = (req, res) => {
     User.findAll()
         .then((dataUsers) => {
             //   console.log("Haloooooooooooooooo")
@@ -58,7 +58,7 @@ getAllDataUser = (req, res) => {
         })
 }
 
-createDataUser = (req, res) => {
+let createDataUser = (req, res) => {
     //bcrypt.hash(req.body.password, saltRounds).then((hash) => {
     encrypt((req.body.password), (newPassword) => {
         User.create({
@@ -82,7 +82,7 @@ createDataUser = (req, res) => {
     // });
 
 }
-getDataUserById = (req, res) => {
+let getDataUserById = (req, res) => {
     User.findById(req.params.id)
         .then((dataUser) => {
             res.send((dataUser))
@@ -91,7 +91,8 @@ getDataUserById = (req, res) => {
             res.send(reason)
         })
 }
-signupDataUser = (req, res) => {
+
+let signupDataUser = (req, res) => {
     encrypt((req.body.password), (newPassword) => {
         User.create({
             first_name: req.body.first_name,
@@ -133,7 +134,7 @@ deleteDataUser = (req, res) => {
 
 }
 
-updateDataUser = (req, res) => {
+let updateDataUser = (req, res) => {
     encrypt((req.body.password), (newPassword) => {
         User.update({
             first_name: req.body.first_name,
